@@ -1,0 +1,11 @@
+### GET Customers
+GET http://localhost:4004/service/capfullstackSvcs/MappingCustomers
+
+
+### GET Northwind Customers
+GET http://localhost:4004/service/capfullstackSvcs/NorthwindCustomers
+
+
+### GET S4 Sales Orders
+GET http://localhost:4004/service/capfullstackSvcs/S4SalesOrder
+
