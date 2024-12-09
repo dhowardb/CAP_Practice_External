@@ -52,6 +52,11 @@
       "SalesOrderA2X": {
         "kind": "odata-v2",
         "model": "srv/external/SalesOrderA2X",
+        "[development]": {
+          "credentials": {
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_ORDER_SRV"
+          }
+        },
         "[production]": {
           "credentials": {
             "destination": "apihub_sandbox",
