@@ -1,10 +1,10 @@
-const cds = require('@sap/cds');
-module.exports = class CAPFullStackService extends cds.ApplicationService {
+import {ApplicationService, connect, Request} from '@sap/cds'
+module.exports = class CAPFullStackService extends ApplicationService {
     init() {
         const { MappingCustomers, S4SalesOrder, NorthwindCustomers } = this.entities
 
-        this.on('READ', S4SalesOrder, async (req) => {
-            const S4Service = await cds.connect.to('SalesOrderA2X');
+        this.on('READ', S4SalesOrder, async (req : Request) => {
+            const S4Service = await connect.to('SalesOrderA2X');
             let orders = await S4Service.send({
                 query: SELECT.from(S4SalesOrder)
                     .columns(
@@ -25,8 +25,8 @@ module.exports = class CAPFullStackService extends cds.ApplicationService {
             return orders;
         })
 
-        this.on('READ', NorthwindCustomers, async (req) => {
-            const NorthWindService = await cds.connect.to('Northwind');
+        this.on('READ', NorthwindCustomers, async (req : Request) => {
+            const NorthWindService = await connect.to('Northwind');
             req.reply(await NorthWindService.run(req.query));
         })
         return super.init();
